@@ -1,7 +1,9 @@
 from app import create_app
+from app.config import Config
 
 import pytest
 
+from unittest.mock import patch, AsyncMock
 
 @pytest.fixture
 def app(event_loop):
@@ -11,6 +13,15 @@ def app(event_loop):
 def test_client(app):
     return app.test_client()
 
+@pytest.fixture
+def config():
+    return Config
+
+
+@pytest.fixture
+def mock_get_sf_client():
+    with patch('app.get_salesforce_client', mock_class=AsyncMock) as mock_get_sf_client:
+        yield mock_get_sf_client
 
 # Magic to switch off slow tests by default
 # Unless you pass --runslow

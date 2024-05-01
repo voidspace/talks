@@ -1,7 +1,6 @@
 import connexion
 from connexion.middleware import MiddlewarePosition
 from connexion.options import SwaggerUIOptions
-from flask import redirect
 from starlette.middleware.cors import CORSMiddleware
 
 from .config import Config as config
@@ -39,3 +38,15 @@ def create_app():
 
 async def healthz_live():
     return {"response": "Healthy"}
+
+
+async def get_salesforce_client(username, password):
+    raise NotImplementedError
+
+async def get_data(key):
+    client = await get_salesforce_client(config.SF_USERNAME, config.SF_PASSWORD)
+    try:
+        result = await client.get_data(key)
+    except IOError as e:
+        return {"error": str(e)}
+    return {"result": result}

@@ -13,5 +13,20 @@ paths:
       responses:
         "200": {description: Success}
         "500": {description: Failure}
+  /get-data:
+    get:
+      operationId: app.get_data
+      summary: Fetch all the data
+      tags:
+        - getdata
+      parameters:
+        - name: key
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200": {description: Success}
+        "500": {description: Failure}
 components:
   schemas: {}
