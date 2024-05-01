@@ -38,4 +38,4 @@ def create_app():
     return connexion_app
 
 async def healthz_live():
-    return "Healthy"
+    return {"response": "Healthy"}
