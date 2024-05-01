@@ -4,7 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+connexion = {extras = ["flask", "swagger-ui", "uvicorn"]}
+flask = {extras = ["async"], version = ">=3.0.0"}
+uvloop = {version = "*", sys_platform = "!= 'win32'"}
 pytest = '*'
+pytest-asyncio = "*"
 
 [dev-packages]
 

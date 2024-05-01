@@ -1,0 +1,17 @@
+openapi: 3.0.0
+
+info:
+  title: Example app
+  version: "0.0.0"
+paths:
+  /healthz/live:
+    get:
+      operationId: app.healthz_live
+      summary: Liveness check
+      tags:
+        - healthcheck
+      responses:
+        "200": {description: Success}
+        "500": {description: Failure}
+components:
+  schemas: {}
