@@ -11,3 +11,6 @@ def test_get_data_fixture(test_client, mock_get_sf_client, config):
     mock_get_sf_client.assert_called_once_with(config.SF_USERNAME, config.SF_PASSWORD)
     mock_client.get_data.assert_called_once_with('value')
 
+
+def test_setup_data_fixture(setup_data):
+    assert setup_data == 5
